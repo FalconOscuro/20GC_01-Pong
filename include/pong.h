@@ -15,6 +15,11 @@ public:
     void Run();
 
 private:
+
+    bool CheckReady() const;
+
+    void Render();
+
     /// @brief Has completed Initialization step
     bool m_Ready;
 
@@ -22,6 +27,7 @@ private:
 
     SDL_Window* m_Wnd;
     SDL_Renderer* m_Renderer;
+    SDL_Texture* m_DisplayTex;
 
     int m_Width;
     int m_Height;

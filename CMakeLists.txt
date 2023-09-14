@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 project(Pong
-    VERSION 0.0.0
+    VERSION 0.1.0
     LANGUAGES CXX
     DESCRIPTION "Pong made for the 20 game challenge using sdl2"
 )
