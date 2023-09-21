@@ -73,6 +73,11 @@ bool Pong::Init()
         return false;
     }
 
+    Rect* temp = new Rect();
+    temp->Position = Vector2{50, 50};
+    temp->Size = Vector2{20, 20};
+    m_Root = temp;
+
     m_Ready = true;
     return true;
 }
@@ -152,14 +157,21 @@ void Pong::Render()
         return;
     }
 
+    // Need to retrieve list of drawable objects
+    // Cannot retrieve simple pointers as position is relative to parent
+
     for (int i = 0; i < m_Height; i++)
     {
+        // Pointer to current target pixel
         Uint32* pX = (Uint32*)((Uint8*)pixels + i * pitch);
         for (int j = 0; j < m_Width; j++)
         {
-            SDL_Colour colour = i == j ? 
-                SDL_Colour{255, 255, 255, 255} : SDL_Colour{0, 0, 0, 255};
+            //SDL_Colour colour = rect.ContainsPoint(j, i) ? 
+            //    SDL_Colour{255, 255, 255, 255} : SDL_Colour{0, 0, 0, 255};
             
+            SDL_Colour colour = SDL_Colour{0, 0, 0, 255};
+
+            // Assign current pixel value, then increment to next in row
             *pX++ = (0xFF000000|(colour.r<<16)|(colour.g<<8)|(colour.b));
         }
     }

@@ -1,6 +1,9 @@
 #ifndef PONG_H
 #define PONG_H
 
+#include "node.h"
+#include "nodes/rect.h"
+
 #include "SDL2/SDL.h"
 
 class Pong
@@ -31,6 +34,8 @@ private:
 
     int m_Width;
     int m_Height;
+
+    Node* m_Root;
 };
 
 
