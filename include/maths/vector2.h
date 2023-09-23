@@ -4,6 +4,9 @@
 struct Vector2
 {
 public:
+    Vector2();
+    Vector2(float x, float y);
+
     float X;
     float Y;
 };

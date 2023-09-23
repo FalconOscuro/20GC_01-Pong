@@ -1,7 +1,8 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include "vector2.h"
+#include "maths/vector2.h"
+#include "visitors/visitor.h"
 
 #include <cstdint>
 
@@ -14,10 +15,13 @@ public:
     virtual ~Node();
 
     void AddChild(Node* child);
-
-    // GetChild
+    Node* GetChild(const uint8_t index) const;
     // DeleteChild
     // FindChild
+
+    uint8_t GetChildCount() const;
+
+    virtual void Accept(Visitor* v) const;
 
     Vector2 Position;
 

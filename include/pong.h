@@ -1,8 +1,7 @@
 #ifndef PONG_H
 #define PONG_H
 
-#include "node.h"
-#include "nodes/rect.h"
+#include "nodes/node.h"
 
 #include "SDL2/SDL.h"
 

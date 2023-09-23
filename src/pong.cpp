@@ -1,5 +1,9 @@
 #include "pong.h"
 
+#include "nodes/drawablerect.h"
+#include "iterators/dfs.h"
+#include "visitors/viewportcull.h"
+
 #include <iostream>
 
 Pong::Pong(int width, int height)
@@ -73,9 +77,8 @@ bool Pong::Init()
         return false;
     }
 
-    Rect* temp = new Rect();
-    temp->Position = Vector2{50, 50};
-    temp->Size = Vector2{20, 20};
+    DrawableRect* temp = new DrawableRect();
+    temp->Rectangle = Rect{Vector2{50, 50}, Vector2{20, 20}};
     m_Root = temp;
 
     m_Ready = true;
@@ -157,8 +160,14 @@ void Pong::Render()
         return;
     }
 
-    // Need to retrieve list of drawable objects
-    // Cannot retrieve simple pointers as position is relative to parent
+    ViewportCull viewportCull = ViewportCull(Rect(Vector2(), 
+        Vector2(m_Width, m_Height)));
+    Iterator_DFS iterator = Iterator_DFS(m_Root);
+
+    while (!iterator.Finished())
+        iterator.Next()->Accept(&viewportCull);
+    
+    std::vector<const DrawableRect*> drawables = viewportCull.GetDrawables();
 
     for (int i = 0; i < m_Height; i++)
     {
@@ -166,10 +175,12 @@ void Pong::Render()
         Uint32* pX = (Uint32*)((Uint8*)pixels + i * pitch);
         for (int j = 0; j < m_Width; j++)
         {
-            //SDL_Colour colour = rect.ContainsPoint(j, i) ? 
-            //    SDL_Colour{255, 255, 255, 255} : SDL_Colour{0, 0, 0, 255};
-            
+            Vector2 pos = Vector2(j, i);
             SDL_Colour colour = SDL_Colour{0, 0, 0, 255};
+
+            for (size_t k = 0; k < drawables.size(); k++)
+                if (drawables[k]->Rectangle.ContainsPoint(pos))
+                    colour = SDL_Colour{255, 255, 255, 255};           
 
             // Assign current pixel value, then increment to next in row
             *pX++ = (0xFF000000|(colour.r<<16)|(colour.g<<8)|(colour.b));
