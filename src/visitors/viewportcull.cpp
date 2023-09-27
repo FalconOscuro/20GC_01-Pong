@@ -1,5 +1,7 @@
 #include "visitors/viewportcull.h"
+
 #include "nodes/drawablerect.h"
+#include "nodes/collider.h"
 
 ViewportCull::ViewportCull(Rect viewport):
     m_Viewport(viewport)
@@ -10,15 +12,20 @@ ViewportCull::ViewportCull(Rect viewport):
 ViewportCull::~ViewportCull()
 {}
 
+void ViewportCull::Visit(const Node* node)
+{
+    (void)node;
+}
+
 void ViewportCull::Visit(const DrawableRect* rect)
 {
     if (m_Viewport.Intersects(rect->Rectangle))
         m_Drawables.push_back(rect);
 }
 
-void ViewportCull::Visit(const Node* node)
+void ViewportCull::Visit(const Collider* collider)
 {
-    (void)node;
+    Visit((DrawableRect*)collider);
 }
 
 std::vector<const DrawableRect*> ViewportCull::GetDrawables() const

@@ -24,6 +24,8 @@ Pong::Pong(int width, int height)
 Pong::~Pong()
 {
     Close();
+
+    // Delete nodes
 }
 
 /// @brief Initialize SDL components
@@ -79,7 +81,7 @@ bool Pong::Init()
         return false;
     }
 
-    m_Root = GetDivider(Vector2(m_Width, m_Height));
+    m_Root = GetGame(Vector2(m_Width, m_Height));
 
     m_Ready = true;
     return true;
@@ -132,6 +134,8 @@ void Pong::Run()
         default:
             break;
         }
+
+        Update();
         
         Render();
     }

@@ -1,6 +1,7 @@
 #include "builders/pongbuilder.h"
 
 #include "nodes/drawablerect.h"
+#include "nodes/ball.h"
 
 Node* GetDivider(Vector2 scale)
 {
@@ -18,6 +19,16 @@ Node* GetDivider(Vector2 scale)
 
         root->AddChild(dot);
     }
+
+    return root;
+}
+
+Node* GetGame(Vector2 scale)
+{
+    Node* root = new Node();
+
+    root->AddChild(GetDivider(scale));
+    root->AddChild(new Ball(scale));
 
     return root;
 }

@@ -12,9 +12,9 @@ public:
     ViewportCull(Rect viewport);
     ~ViewportCull();
 
-    void Visit(const DrawableRect* rect) override;
-
     void Visit(const Node* node) override;
+    void Visit(const DrawableRect* rect) override;
+    void Visit(const Collider* collider) override;
 
     std::vector<const DrawableRect*> GetDrawables() const;
 
