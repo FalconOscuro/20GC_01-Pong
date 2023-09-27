@@ -23,6 +23,8 @@ public:
 
     virtual void Accept(Visitor* v) const;
 
+    virtual void Update(float deltaTime);
+
     Vector2 Position;
 
 private:

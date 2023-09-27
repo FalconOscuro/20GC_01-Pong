@@ -41,3 +41,8 @@ void Node::Accept(Visitor* v) const
 {
     v->Visit(this);
 }
+
+void Node::Update(float deltaTime)
+{
+    (void)deltaTime;
+}

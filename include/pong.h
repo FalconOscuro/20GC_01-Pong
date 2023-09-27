@@ -20,6 +20,7 @@ private:
 
     bool CheckReady() const;
 
+    void Update();
     void Render();
 
     /// @brief Has completed Initialization step

@@ -4,6 +4,8 @@
 #include "iterators/dfs.h"
 #include "visitors/viewportcull.h"
 
+#include "builders/pongbuilder.h"
+
 #include <iostream>
 
 Pong::Pong(int width, int height)
@@ -77,9 +79,7 @@ bool Pong::Init()
         return false;
     }
 
-    DrawableRect* temp = new DrawableRect();
-    temp->Rectangle = Rect{Vector2{50, 50}, Vector2{20, 20}};
-    m_Root = temp;
+    m_Root = GetDivider(Vector2(m_Width, m_Height));
 
     m_Ready = true;
     return true;
@@ -192,4 +192,12 @@ void Pong::Render()
     SDL_RenderClear(m_Renderer);
     SDL_RenderCopy(m_Renderer, m_DisplayTex, NULL, NULL);
     SDL_RenderPresent(m_Renderer);
+}
+
+void Pong::Update()
+{
+    Iterator_DFS iterator = Iterator_DFS(m_Root);
+
+    while (!iterator.Finished())
+        iterator.Next()->Update(1.f/60.f);
 }
