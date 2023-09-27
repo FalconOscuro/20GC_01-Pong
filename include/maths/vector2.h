@@ -16,8 +16,8 @@ public:
     void operator+=(const Vector2& v);
     void operator-=(const Vector2& v);
 
-    Vector2 operator*=(const float& s);
-    Vector2 operator/=(const float& s);
+    void operator*=(const float& s);
+    void operator/=(const float& s);
 
     float X;
     float Y;
