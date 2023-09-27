@@ -120,6 +120,7 @@ void Pong::Run()
         return;
     }
 
+    m_LastUpdate = std::chrono::high_resolution_clock::now();
     m_Running = true;
     while (m_Running)
     {
@@ -200,8 +201,14 @@ void Pong::Render()
 
 void Pong::Update()
 {
+    using namespace std::chrono;
+
+    high_resolution_clock::time_point now = high_resolution_clock::now();
+    duration<float> deltaTime = duration_cast<duration<float>>(now - m_LastUpdate);
+    m_LastUpdate = now;
+    
     Iterator_DFS iterator = Iterator_DFS(m_Root);
 
     while (!iterator.Finished())
-        iterator.Next()->Update(1.f/60.f);
+        iterator.Next()->Update(deltaTime.count());
 }

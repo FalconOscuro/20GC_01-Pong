@@ -3,7 +3,8 @@
 
 #include "nodes/node.h"
 
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
+#include <chrono>
 
 class Pong
 {
@@ -36,6 +37,8 @@ private:
     int m_Height;
 
     Node* m_Root;
+
+    std::chrono::high_resolution_clock::time_point m_LastUpdate;
 };
 
 
