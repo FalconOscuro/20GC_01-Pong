@@ -12,11 +12,6 @@ ViewportCull::ViewportCull(Rect viewport):
 ViewportCull::~ViewportCull()
 {}
 
-void ViewportCull::Visit(const Node* node)
-{
-    (void)node;
-}
-
 void ViewportCull::Visit(const DrawableRect* rect)
 {
     if (m_Viewport.Intersects(rect->Rectangle))

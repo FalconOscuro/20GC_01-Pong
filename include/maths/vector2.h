@@ -1,6 +1,7 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
+/// @brief 2D floating point vector
 struct Vector2
 {
 public:
@@ -21,7 +22,7 @@ public:
 
     float X;
     float Y;
-};
+}; // struct Vector2
 
 
 #endif // VECTOR2_H

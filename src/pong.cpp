@@ -132,6 +132,12 @@ void Pong::Run()
             m_Running = false;
             break;
         
+        case SDL_KEYDOWN:
+            break;
+
+        case SDL_KEYUP:
+            break;
+
         default:
             break;
         }

@@ -5,6 +5,7 @@
 
 #include <stack>
 
+/// @brief Depth first iterator implementation
 class Iterator_DFS : public Iterator
 {
 public:
@@ -18,6 +19,6 @@ public:
 private:
 
     std::stack<Node*> m_NodeStack;
-};
+};// class Iterator_DFS
 
 #endif // DFS_H
