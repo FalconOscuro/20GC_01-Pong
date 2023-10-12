@@ -8,4 +8,6 @@ Node* GetDivider(Vector2 scale);
 
 Node* GetGame(Vector2 scale);
 
+Node* GetPaddle(Vector2 scale);
+
 #endif // PONGBUILDER_H

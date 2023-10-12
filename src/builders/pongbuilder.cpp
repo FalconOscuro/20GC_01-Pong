@@ -2,6 +2,7 @@
 
 #include "nodes/drawablerect.h"
 #include "nodes/ball.h"
+#include "nodes/paddle.h"
 
 Node* GetDivider(Vector2 scale)
 {
@@ -29,6 +30,17 @@ Node* GetGame(Vector2 scale)
 
     root->AddChild(GetDivider(scale));
     root->AddChild(new Ball(scale));
+    root->AddChild(GetPaddle(scale));
+
 
     return root;
+}
+
+Node* GetPaddle(Vector2 scale)
+{
+    Paddle* paddle = new Paddle();
+    paddle->Rectangle.Size = Vector2(10, 50);
+    paddle->Rectangle.Position = Vector2(50, scale.Y / 2 - 25);
+
+    return paddle;
 }
