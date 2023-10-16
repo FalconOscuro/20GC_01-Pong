@@ -2,7 +2,7 @@
 #define NODE_H
 
 #include "maths/vector2.h"
-#include "visitors/visitor.h"
+#include "visitors/visitor.hpp"
 
 #include <cstdint>
 

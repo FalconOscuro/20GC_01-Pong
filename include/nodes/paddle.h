@@ -7,6 +7,8 @@ class Paddle : public Collider
 {
 public:
     Paddle();
+
+    void Update(float deltaTime) override;
 };
 
 #endif // PADDLE_H

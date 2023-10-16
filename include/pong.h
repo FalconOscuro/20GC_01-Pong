@@ -2,6 +2,7 @@
 #define PONG_H
 
 #include "nodes/node.h"
+#include "core/input/input.hpp"
 
 #include <SDL2/SDL.h>
 #include <chrono>
@@ -32,6 +33,8 @@ private:
     SDL_Window* m_Wnd;
     SDL_Renderer* m_Renderer;
     SDL_Texture* m_DisplayTex;
+
+    Input* m_Input;
 
     int m_Width;
     int m_Height;

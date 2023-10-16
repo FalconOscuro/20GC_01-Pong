@@ -25,7 +25,7 @@ Pong::~Pong()
 {
     Close();
 
-    // Delete nodes
+    delete m_Root;
 }
 
 /// @brief Initialize SDL components
@@ -82,6 +82,18 @@ bool Pong::Init()
     }
 
     m_Root = GetGame(Vector2(m_Width, m_Height));
+    if (m_Root == nullptr || m_Root->GetChildCount() != 3)
+    {
+        std::cerr << "Failed to create root\n";
+        return false;
+    }
+
+    m_Input = Input::Get();
+    if (m_Input == nullptr)
+    {
+        std::cerr << "Failed to create input manager\n";
+        return false;
+    }
 
     m_Ready = true;
     return true;
@@ -133,9 +145,8 @@ void Pong::Run()
             break;
         
         case SDL_KEYDOWN:
-            break;
-
         case SDL_KEYUP:
+            m_Input->ParseInput(event.key);
             break;
 
         default:
@@ -191,7 +202,7 @@ void Pong::Render()
 
             for (size_t k = 0; k < drawables.size(); k++)
                 if (drawables[k]->Rectangle.ContainsPoint(pos))
-                    colour = SDL_Colour{255, 255, 255, 255};           
+                    colour = SDL_Colour{255, 255, 255, 255};
 
             // Assign current pixel value, then increment to next in row
             *pX++ = (0xFF000000|(colour.r<<16)|(colour.g<<8)|(colour.b));

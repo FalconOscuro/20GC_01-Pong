@@ -8,7 +8,10 @@ Node::Node()
 }
 
 Node::~Node()
-{}
+{
+    for (uint8_t i = 0; i < m_ChildCount; i++)
+        delete m_Children[i];
+}
 
 void Node::AddChild(Node* child)
 {

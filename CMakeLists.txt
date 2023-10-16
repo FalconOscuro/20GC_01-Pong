@@ -18,6 +18,12 @@ endif()
 
 if (NOT MSVC)
     add_compile_options(-Wall -Wextra -Wpedantic)
+
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        message(STATUS "Switching Clang to DWARF v4")
+        add_compile_options(-gdwarf-4)
+    endif()
+
     if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
         add_compile_options(-Werror)
     endif()

@@ -8,7 +8,9 @@ int main()
 {
     Pong pong = Pong(640, 480);
 
-    pong.Init();
+    if (!pong.Init())
+        return 0;
+        
     pong.Run();
     pong.Close();
 

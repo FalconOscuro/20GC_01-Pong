@@ -3,7 +3,7 @@
 
 #include "node.h"
 #include "maths/rect.h"
-#include "visitors/visitor.h"
+#include "visitors/visitor.hpp"
 
 class DrawableRect : public Node
 {

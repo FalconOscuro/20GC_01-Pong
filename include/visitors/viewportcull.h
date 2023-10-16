@@ -1,7 +1,7 @@
 #ifndef VIEWPORTCULL_H
 #define VIEWPORTCULL_H
 
-#include "visitor.h"
+#include "visitor.hpp"
 #include "maths/rect.h"
 
 #include <vector>
