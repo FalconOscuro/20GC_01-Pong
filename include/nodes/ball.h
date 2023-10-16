@@ -10,6 +10,8 @@ public:
 
     void Update(float deltaTime) override;
 
+    void OnCollide(Collider* collider) override;
+
 private:
     Vector2 m_Bounds;
 

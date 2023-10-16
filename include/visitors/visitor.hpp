@@ -13,15 +13,15 @@ public:
     Visitor() {}
     virtual ~Visitor() = 0;
 
-    virtual void Visit(const Node* node) {
+    virtual void Visit(Node* node) {
         (void)node;
     }
 
-    virtual void Visit(const DrawableRect* drawable) {
+    virtual void Visit(DrawableRect* drawable) {
         (void)drawable;
     }
 
-    virtual void Visit(const Collider* collider) {
+    virtual void Visit(Collider* collider) {
         (void)collider;
     }
     // Visit functions defined here to prevent repetetive code on visitor implementations

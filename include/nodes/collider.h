@@ -8,7 +8,9 @@ class Collider : public DrawableRect
 public:
     Collider();
 
-    void Accept(Visitor* visitor) const override;
+    virtual void OnCollide(Collider* other);
+
+    void Accept(Visitor* visitor) override;
 };
 
 #endif // COLLIDER_H

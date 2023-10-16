@@ -3,7 +3,7 @@
 DrawableRect::DrawableRect()
 {}
 
-void DrawableRect::Accept(Visitor* visitor) const
+void DrawableRect::Accept(Visitor* visitor)
 {
     visitor->Visit(this);
 }

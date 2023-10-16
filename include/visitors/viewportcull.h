@@ -13,17 +13,17 @@ public:
     ViewportCull(Rect viewport);
     ~ViewportCull();
 
-    void Visit(const DrawableRect* rect) override;
-    void Visit(const Collider* collider) override;
+    void Visit(DrawableRect* rect) override;
+    void Visit(Collider* collider) override;
 
     /// @brief Get list of all found visible drawables
-    std::vector<const DrawableRect*> GetDrawables() const;
+    std::vector<DrawableRect*> GetDrawables() const;
 
 private:
 
     Rect m_Viewport;
 
-    std::vector<const DrawableRect*> m_Drawables;
+    std::vector<DrawableRect*> m_Drawables;
 }; // class ViewportCull
 
 #endif // VIEWPORTCULL_H

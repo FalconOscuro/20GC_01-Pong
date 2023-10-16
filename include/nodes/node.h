@@ -33,7 +33,7 @@ public:
     /// @brief Calls relevant visitor function for this node type
     /// @note requires re-implementation per node with visitor specific behaviour
     /// @todo Investigate other approaches
-    virtual void Accept(Visitor* v) const;
+    virtual void Accept(Visitor* v);
 
     /// @brief Main update logic
     /// @param deltaTime time taken to process last frame in seconds

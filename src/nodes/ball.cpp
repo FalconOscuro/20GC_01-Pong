@@ -23,3 +23,9 @@ void Ball::Update(float deltaTime)
     
     Rectangle.Position += m_Velocity * deltaTime;
 }
+
+void Ball::OnCollide(Collider* collider)
+{
+    (void)collider;
+    m_Velocity.X *= -1;
+}

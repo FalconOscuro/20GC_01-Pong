@@ -12,7 +12,7 @@ public:
 
     Rect Rectangle;
 
-    void Accept(Visitor* visitor) const override;
+    void Accept(Visitor* visitor) override;
 };
 
 #endif // DRAWABLERECT_H

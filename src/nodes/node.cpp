@@ -40,7 +40,7 @@ uint8_t Node::GetChildCount() const
     return m_ChildCount;
 }
 
-void Node::Accept(Visitor* v) const
+void Node::Accept(Visitor* v)
 {
     v->Visit(this);
 }

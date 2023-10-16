@@ -6,24 +6,24 @@
 ViewportCull::ViewportCull(Rect viewport):
     m_Viewport(viewport)
 {
-    m_Drawables = std::vector<const DrawableRect*>();
+    m_Drawables = std::vector<DrawableRect*>();
 }
 
 ViewportCull::~ViewportCull()
 {}
 
-void ViewportCull::Visit(const DrawableRect* rect)
+void ViewportCull::Visit(DrawableRect* rect)
 {
     if (m_Viewport.Intersects(rect->Rectangle))
         m_Drawables.push_back(rect);
 }
 
-void ViewportCull::Visit(const Collider* collider)
+void ViewportCull::Visit(Collider* collider)
 {
     Visit((DrawableRect*)collider);
 }
 
-std::vector<const DrawableRect*> ViewportCull::GetDrawables() const
+std::vector<DrawableRect*> ViewportCull::GetDrawables() const
 {
     return m_Drawables;
 }

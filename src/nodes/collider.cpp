@@ -4,7 +4,12 @@ Collider::Collider():
     DrawableRect()
 {}
 
-void Collider::Accept(Visitor* visitor) const
+void Collider::OnCollide(Collider* collider)
+{
+    (void)collider;
+}
+
+void Collider::Accept(Visitor* visitor)
 {
     visitor->Visit(this);
 }

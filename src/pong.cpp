@@ -3,6 +3,7 @@
 #include "nodes/drawablerect.h"
 #include "iterators/dfs.h"
 #include "visitors/viewportcull.h"
+#include "visitors/detectcollision.h"
 
 #include "builders/pongbuilder.h"
 
@@ -153,8 +154,9 @@ void Pong::Run()
             break;
         }
 
+        DetectCollision collide = DetectCollision(m_Root);
+        collide.Run();
         Update();
-        
         Render();
     }
     m_Running = false;
@@ -189,7 +191,7 @@ void Pong::Render()
     while (!iterator.Finished())
         iterator.Next()->Accept(&viewportCull);
     
-    std::vector<const DrawableRect*> drawables = viewportCull.GetDrawables();
+    std::vector<DrawableRect*> drawables = viewportCull.GetDrawables();
 
     for (int i = 0; i < m_Height; i++)
     {
